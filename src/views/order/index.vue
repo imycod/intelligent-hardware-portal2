@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-black w-full overflow-hidden pb-[301px]">
+  <div class="w-full h-full overflow-hidden pb-[301px]">
     <div
-      class="mt-[247px] max-w-[1920px] mx-auto flex flex-col px-4 md:px-8 text-white"
+      class="mt-[247px] content-container mx-auto flex flex-col px-4 md:px-8 text-white"
     >
       <div class="flex order-area flex-col lg:flex-row">
         <!-- 左侧产品图片 -->
@@ -22,7 +22,7 @@
 
         <!-- 右侧产品信息 -->
         <div
-          class="w-full lg:w-[1014px] flex flex-col gap-6 right mt-8 lg:mt-0"
+          class="flex-1 lg:w-[1014px] flex flex-col gap-6 right mt-8 lg:mt-0"
         >
           <h1 class="text-2xl md:text-4xl font-bold t1">
             Get Acumenbot: The Future of AI-powered Convenience
@@ -196,6 +196,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .order-area {
   .left {
+    width: 526px;
     img {
       width: 100%;
       height: auto;
