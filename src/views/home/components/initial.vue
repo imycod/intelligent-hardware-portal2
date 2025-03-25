@@ -4,7 +4,7 @@
       <img src="@/assets/home/1.png" alt="background" class="w-full h-full object-cover object-center" />
     </div>
     <div
-      class="relative z-10  max-w-[1920px] mx-auto flex flex-col items-center justify-center h-full space-y-6 md:space-y-8 px-4 md:px-8">
+      class="relative z-10 content-container mx-auto flex flex-col items-center justify-center h-full space-y-6 md:space-y-8 px-4 md:px-8">
       <div class="flex flex-col lg:md:items-start w-full items-center">
         <h1 ref="meetText"
           class="font-sf-pro text-3xl md:text-4xl lg:text-[64px] font-[270] text-white leading-tight opacity-0">
