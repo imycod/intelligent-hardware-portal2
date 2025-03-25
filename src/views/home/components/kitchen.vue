@@ -2,7 +2,7 @@
   <section class="relative mt-[4vh]">
     <img src="@/assets/home/2.png" alt="section2" class="w-full h-[90vh] object-cover object-center" />
     <div ref="overlay" class="absolute inset-0 opacity-0" style="background: rgba(0, 0, 0, 0.50);">
-      <div class="mx-auto px-[clamp(1rem,_8vw,_192px)] h-full flex flex-col items-start justify-center text-white">
+      <div class="mx-auto content-container md:px-8 h-full flex flex-col items-start justify-center text-white">
         <div class="w-full flex flex-col items-start">
           <h2 ref="title" class="title opacity-0 translate-y-10">Superior Conversations</h2>
           <p ref="description" class="desc opacity-0 translate-y-10">Acumenbot is
