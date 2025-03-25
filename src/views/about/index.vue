@@ -1,6 +1,6 @@
 <template>
   <div class="pb-[288px] bg-black w-full overflow-hidden">
-    <div class="max-w-[1920px] mx-auto flex flex-col px-8">
+    <div class="content-container mx-auto flex flex-col px-8">
       <div class="q mt-[228px] opacity-0" ref="t1">
         WANT TO KNOW MORE ABOUT ACUMENBOT?
       </div>

@@ -50,3 +50,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+nav{
+  width: 1481px;
+}
+</style>

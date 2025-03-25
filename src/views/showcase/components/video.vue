@@ -1,6 +1,6 @@
 <template>
   <section
-    class="overflow-hidden relative border-red-200 border-solid border-[5px] h-[610px] rounded-[50px] w-[848px] max-md:w-full max-md:h-[400px] max-sm:h-[300px]">
+    class="overflow-hidden relative border-red-200 border-solid border-[5px] rounded-[50px]">
     <img :src="imageUrl" :alt="altText" class="object-cover size-full" />
   </section>
 </template>
@@ -29,3 +29,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+section{
+  width: 848px;
+  height: 610px;
+}
+</style>

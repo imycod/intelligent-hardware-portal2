@@ -14,7 +14,7 @@
       />
 
       <!-- Dynamic component with transition -->
-      <div class="component-container flex-1 flex flex-col justify-center relative">
+      <div class="component-container  flex flex-col relative">
         <Transition 
           @enter="onEnter" 
           @leave="onLeave" 

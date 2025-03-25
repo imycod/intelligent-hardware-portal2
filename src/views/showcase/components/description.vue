@@ -1,5 +1,5 @@
 <template>
-  <article class="max-w-[574px] max-md:max-w-full max-md:text-center">
+  <article class="article">
     <h2 class="mb-9 text-5xl text-white font-[410] max-sm:text-3xl">
       {{ title }}
     </h2>
@@ -33,3 +33,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.article{
+  width: 574px;
+}
+</style>
