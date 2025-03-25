@@ -1,10 +1,9 @@
 <template>
   <div class="bg-black w-full overflow-hidden pb-[301px]">
     <div id="error-toast" class="toast"></div>
-    <!-- 主内容 -->
+
     <div
       class="max-w-[1920px] mx-auto flex flex-col items-center px-4 md:px-8 text-white"
-      v-show="!showChatMessages"
     >
       <div
         ref="titleText"
@@ -81,26 +80,23 @@
           </template>
         </button>
       </div>
-    </div>
-    <!-- 聊天记录 -->
-    <div class="modal-container" v-show="showChatMessages">
-      <div class="chat-container">
-        <div class="chat-messages" ref="chatMessages">
-          <div
-            v-for="(message, index) in messages"
-            :key="index"
-            class="message"
-            :class="message.role"
-          >
-            <div class="message-content">
+
+      <div class="modal-container" v-show="showChatMessages">
+        <div  class="chat-container mt-8">
+          <div class="chat-messages" ref="chatMessages">
+            <div
+              v-for="(message, index) in messages"
+              :key="index"
+              class="message"
+              :class="message.role"
+            >
               {{ message.content }}
             </div>
           </div>
         </div>
-        <img src="@/assets/bot/x-circle.png" alt="" class="close-btn" @click="closeChatMessages" />
       </div>
+      
     </div>
-    <!-- 音频输出 -->
     <audio id="audio-output" ref="audioOutput" v-show="false"></audio>
   </div>
 </template>
@@ -616,11 +612,13 @@ async function initializeWebRTC() {
     eventSource.addEventListener("output", (event) => {
       try {
         const eventJson = JSON.parse(event.data);
-        addMessage(eventJson.role, eventJson.content);
+        addMessage("assistant", eventJson.content);
       } catch (err) {
         console.error("Error parsing event source message:", err);
       }
     });
+
+    addMessage("assistant", "Hello! How can I help you today?");
   } catch (err) {
     console.error("Error setting up WebRTC:", err);
     showError("Failed to establish connection. Please try again.");
@@ -696,10 +694,6 @@ function start() {
     closeWebSocket();
   }
 }
-
-function closeChatMessages() {
-  showChatMessages.value = false;
-}
 </script>
 
 <style lang="scss" scoped>
@@ -753,14 +747,6 @@ function closeChatMessages() {
   );
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .modal-container {
   position: fixed;
   top: 0;
@@ -772,75 +758,108 @@ function closeChatMessages() {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+  padding: 20px;
   box-sizing: border-box;
   animation: fadeIn 0.3s ease-in-out;
+}
 
-  .chat-container {
-    width: 1244px;
-    height: 800px;
-    position: relative;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .chat-messages {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      overflow-y: scroll;
-      padding: 50px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 36px;
-      flex-shrink: 0;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.2);
+.chat-container {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+              0 0 20px rgba(25, 201, 255, 0.2);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 
+                0 0 25px rgba(25, 201, 255, 0.3);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(45deg, rgba(25, 201, 255, 0.5), rgba(143, 255, 169, 0.5));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
 
-      // 滚动条padding-top 50px
-      &::-webkit-scrollbar {
-        padding-top: 50px;
-      }
+.chat-messages {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(25, 201, 255, 0.5) #1a1a1a;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(25, 201, 255, 0.5);
+    border-radius: 4px;
+    border: 2px solid #1a1a1a;
+  }
+}
 
-      .message {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
+.message {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  position: relative;
+  transition: all 0.2s ease;
 
-        &.user {
-          justify-content: flex-end;
-
-          .message-content {
-            display: flex;
-            padding: 10px 24px;
-            align-items: flex-start;
-            gap: 10px;
-            align-self: stretch;
-            border-radius: 50px;
-            background: #fff;
-            color: #000;
-            max-width: 70%;
-            font-size: 24px;
-          }
-        }
-
-        &.assistant {
-          justify-content: flex-start;
-
-          .message-content {
-            color: #fff;
-            font-family: "SF Pro";
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 270;
-            line-height: normal;
-            max-width: 70%;
-          }
-        }
-      }
+  &.user {
+    background-color: rgba(143, 255, 169, 0.1);
+    margin-left: 20%;
+    border-left: 3px solid rgba(143, 255, 169, 0.5);
+    
+    &:hover {
+      background-color: rgba(143, 255, 169, 0.15);
     }
+  }
 
-    .close-btn {
-      position: absolute;
-      top: 0px;
-      right: -45px;
-      cursor: pointer;
+  &.assistant {
+    background-color: rgba(25, 201, 255, 0.1);
+    margin-right: 20%;
+    border-left: 3px solid rgba(25, 201, 255, 0.5);
+    
+    &:hover {
+      background-color: rgba(25, 201, 255, 0.15);
     }
   }
 }
