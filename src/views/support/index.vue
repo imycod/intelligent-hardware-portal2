@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-[228px] flex flex-col bd items-center w-full mb-[151px]">
-    <div class="w-[956px] h-[891px]">
+  <div class="mt-[228px] flex flex-col items-center w-full mb-[151px]">
+    <div class="w-[956px]">
       <div class="q w-full text-center">HAVING ANY TROUBLE WITH ACUMENBOT?</div>
       <div
         class="form-container flex flex-col justify-center items-center gap-y-[30px]"
@@ -78,6 +78,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    box-sizing: border-box;
     border-radius: 50px;
     background: #fbcbc1;
     cursor: pointer;
