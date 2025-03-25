@@ -4,13 +4,28 @@
       class="mt-[247px] content-container mx-auto flex flex-col px-4 md:px-8 text-white"
     >
       <div class="flex order-area flex-col lg:flex-row">
-        <!-- 左侧产品图片 -->
+        <!-- 左侧产品图片 - 使用Swiper轮播 -->
         <div class="w-full lg:w-[526px] lg:mr-[58px] left">
-          <img
-            src="@/assets/order/product.png"
-            alt="Acumenbot"
-            class="rounded-lg w-full"
-          />
+          <swiper
+            :modules="[SwiperPagination, SwiperAutoplay]"
+            :slides-per-view="1"
+            :pagination="{ 
+              clickable: true,
+              el: '.swiper-pagination',
+              type: 'bullets'
+            }"
+            :autoplay="{ delay: 5000, disableOnInteraction: false }"
+            class="product-swiper rounded-lg"
+          >
+            <swiper-slide v-for="(image, index) in productImages" :key="index">
+              <img
+                :src="image"
+                alt="Acumenbot"
+                class="rounded-lg w-full"
+              />
+            </swiper-slide>
+            <div class="swiper-pagination"></div>
+          </swiper>
           <div class="mt-[16px] dots"></div>
           <div class="mt-[14px] t1">Estimated delivery date: June 1th</div>
           <div class="mt-[36px] t2">
@@ -71,8 +86,23 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import gsap from "gsap";
+// Import Swiper components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination as SwiperPagination, Autoplay as SwiperAutoplay } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import product1 from '@/assets/order/product.png';
+// Define product images array
+const productImages = ref([
+  product1,
+  product1,
+  product1,
+  product1,
+]);
 
 onMounted(() => {
   const tl = gsap.timeline({
@@ -86,7 +116,7 @@ onMounted(() => {
   gsap.set(
     [
       ".left",
-      ".left img",
+      ".product-swiper",
       ".left .dots",
       ".left .t1",
       ".left .t2",
@@ -109,7 +139,7 @@ onMounted(() => {
     y: 0,
   })
     .to(
-      ".left img",
+      ".product-swiper",
       {
         opacity: 1,
         y: 0,
@@ -197,12 +227,20 @@ onMounted(() => {
 .order-area {
   .left {
     width: 526px;
-    img {
+    
+    .product-swiper {
       width: 100%;
       height: auto;
       max-width: 526px;
       aspect-ratio: 526/351;
     }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
     .t1 {
       color: #fff;
       font-family: "SF Pro";
@@ -275,5 +313,27 @@ onMounted(() => {
       }
     }
   }
+}
+
+:deep(.swiper-pagination) {
+  position: relative;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+:deep(.swiper-pagination-bullet) {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
+  opacity: 0.5;
+  margin: 0 !important;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  background: #fbcbc1;
+  opacity: 1;
 }
 </style>
