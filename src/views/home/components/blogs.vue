@@ -25,7 +25,7 @@
         class="mySwiper"
       >
         <swiper-slide v-for="index in 10" :key="index">
-          <div class="bg-[#FBCBC1] rounded-[20px] p-8 h-[600px]">
+          <div class="bg-[#FBCBC1] rounded-[20px] p-20 h-[600px]">
             <h3 class="text-black text-2xl font-medium">
               GET BETTER RESPONSES WITH BETTER PROMPTS
             </h3>
