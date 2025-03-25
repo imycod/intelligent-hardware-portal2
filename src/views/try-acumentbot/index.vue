@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black w-full overflow-hidden pb-[301px]">
+  <div class="h-full w-full overflow-hidden pb-[301px]">
     <div id="error-toast" class="toast"></div>
     <!-- 主内容 -->
     <div
@@ -120,7 +120,7 @@ const webSocket = ref<WebSocket | null>(null);
 const rec = ref<any>(null);
 const webrtc_id = ref("");
 const messages = ref<{ role: string; content: string }[]>([]);
-const showChatMessages = ref(true);
+const showChatMessages = ref(false);
 const chatMessages = ref<HTMLElement | null>(null);
 const audioOutput = ref<HTMLAudioElement | null>(null);
 const isRtc = ref(false);

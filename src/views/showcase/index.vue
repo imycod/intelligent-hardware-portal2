@@ -5,7 +5,7 @@
       rel="stylesheet"
     />
     <main
-      class="px-32 py-24 mx-auto max-w-none min-h-screen bg-black max-md:px-5 max-md:py-10 max-md:max-w-[991px] max-sm:max-w-screen-sm"
+      class="px-32 flex flex-col py-24 mx-auto max-w-none min-h-screen bg-black max-md:px-5 max-md:py-10 max-md:max-w-[991px] max-sm:max-w-screen-sm"
     >
       <FeatureNavigation
         :features="features"
@@ -14,7 +14,7 @@
       />
 
       <!-- Dynamic component with transition -->
-      <div class="component-container relative">
+      <div class="component-container flex-1 flex flex-col justify-center relative">
         <Transition 
           @enter="onEnter" 
           @leave="onLeave" 
