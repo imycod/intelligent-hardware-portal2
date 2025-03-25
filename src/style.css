@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* 重置ul标签样式 */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 重置li标签样式 */
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* 重置h1标签样式 */
+h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.bd {
+  border: 1px solid red;
+}
