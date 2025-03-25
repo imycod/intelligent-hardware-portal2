@@ -84,6 +84,7 @@
     <!-- 聊天记录 -->
     <div class="modal-container" v-show="showChatMessages">
       <div class="chat-container">
+        <img src="@/assets/bot/union.png" alt="" class="chat-bg" />
         <div class="chat-messages" ref="chatMessages">
           <div
             v-for="(message, index) in messages"
@@ -119,7 +120,7 @@ const webSocket = ref<WebSocket | null>(null);
 const rec = ref<any>(null);
 const webrtc_id = ref("");
 const messages = ref<{ role: string; content: string }[]>([]);
-const showChatMessages = ref(false);
+const showChatMessages = ref(true);
 const chatMessages = ref<HTMLElement | null>(null);
 const audioOutput = ref<HTMLAudioElement | null>(null);
 const isRtc = ref(false);
@@ -778,6 +779,13 @@ function closeChatMessages() {
     width: 1244px;
     height: 800px;
     position: relative;
+    .chat-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
 
     .chat-messages {
       display: flex;
