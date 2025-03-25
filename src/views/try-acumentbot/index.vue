@@ -4,7 +4,6 @@
     <!-- 主内容 -->
     <div
       class="max-w-[1920px] mx-auto flex flex-col items-center px-4 md:px-8 text-white"
-      v-show="!showChatMessages"
     >
       <div
         ref="titleText"
@@ -770,7 +769,7 @@ function closeChatMessages() {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0);
   z-index: 1000;
   box-sizing: border-box;
   animation: fadeIn 0.3s ease-in-out;
@@ -835,11 +834,10 @@ function closeChatMessages() {
         }
       }
     }
-
     .close-btn {
       position: absolute;
       top: 0px;
-      right: -45px;
+      right: -65px;
       cursor: pointer;
     }
   }
