@@ -1,17 +1,36 @@
 <template>
-  <section class="relative mt-[4vh]">
-    <img src="@/assets/home/4.png" alt="section2" class="w-full h-[90vh] object-cover object-center" />
-    <div ref="overlay" class="absolute inset-0 opacity-0" style="background: rgba(0, 0, 0, 0.50);">
-      <div class="mx-auto content-container md:px-8 h-full flex flex-col items-start justify-center text-white">
+  <section class="section-container relative">
+    <img
+      src="@/assets/home/4.png"
+      alt="bg"
+      class="w-full h-full object-cover object-center"
+    />
+    <div
+      ref="overlay"
+      class="absolute inset-0"
+      style="background: rgba(0, 0, 0, 0.5)"
+    >
+      <div
+        class="mx-auto content-container h-full flex flex-col justify-center text-white"
+      >
         <div class="w-full flex flex-col items-start">
-          <h2 ref="title" class="title opacity-0 translate-y-10">Reliable Convenience</h2>
-          <p ref="description" class="desc opacity-0 translate-y-10">Acumenbot is instantly accessible with a simple
-            command, eliminating the need for a screen. Its automatic syncing feature makes
-            sure all historical conversations are up to date from any device.
+          <h2 ref="title" class="title opacity-0 translate-y-10">
+            Reliable Convenience
+          </h2>
+          <p ref="description" class="desc opacity-0 translate-y-10">
+            Acumenbot is instantly accessible with a simple<br />
+            command, eliminating the need for a screen. Its automatic syncing
+            feature makes sure all historical conversations are up to date from
+            any device.
           </p>
-          <div class="w-full flex justify-end">
-            <button ref="button" class="opacity-0 translate-y-10 hover:bg-[#ffc0c0] cursor-pointer">Discover Acumenbot's Full Features <img
-                src="@/assets/home/arrow-up-right.png" alt="" srcset=""></button>
+          <div class="button-wrapper w-full flex justify-end">
+            <button
+              ref="button"
+              class="translate-y-10 opacity-0 hover:bg-[#ffc0c0] cursor-pointer"
+            >
+              Discover Acumenbot's Full Features
+              <img src="@/assets/home/arrow-up-right.png" alt="" srcset="" />
+            </button>
           </div>
         </div>
       </div>
@@ -20,105 +39,111 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ref, onMounted } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
-const overlay = ref<HTMLElement | null>(null)
-const title = ref<HTMLElement | null>(null)
-const description = ref<HTMLElement | null>(null)
-const button = ref<HTMLElement | null>(null)
+const overlay = ref<HTMLElement | null>(null);
+const title = ref<HTMLElement | null>(null);
+const description = ref<HTMLElement | null>(null);
+const button = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   if (overlay.value && title.value && description.value && button.value) {
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: overlay.value,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'play none none reverse'
+        start: "top center",
+        end: "bottom center",
+        toggleActions: "play none none reverse",
       },
-      onComplete: () => {
-      }
-    })
+      onComplete: () => {},
+    });
 
     tl.to(overlay.value, {
       opacity: 1,
-      duration: 0.8
+      duration: 0.8,
     })
       .to(title.value, {
         opacity: 1,
         y: 0,
-        duration: 0.6
+        duration: 0.6,
       })
-      .to(description.value, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6
-      }, '-=0.3')
-      .to(button.value, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6
-      }, '-=0.3')
+      .to(
+        description.value,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        },
+        "-=0.3"
+      )
+      .to(
+        button.value,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        },
+        "-=0.3"
+      );
   }
-})
+});
 </script>
 
-<style scoped>
-section {
-  font-family: 'SF Pro Display', 'SF Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-}
+<style lang="scss" scoped>
+.section-container {
+  font-family: "SF Pro Display", "SF Pro", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  .button-wrapper {
+    button {
+      width: 727px;
+      height: 86px;
+      box-sizing: border-box;
+      display: flex;
+      padding: 24px 48px;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 50px;
+      background: #fbcbc1;
+      transition: all 0.3s ease;
+      color: #000;
+      font-family: "SF Pro";
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 270;
+      line-height: normal;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
 
-button {
-  display: inline-flex;
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem);
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 3.125rem;
-  background: #FBCBC1;
-  color: #000;
-  font-family: "SF Pro";
-  font-size: clamp(1.25rem, 2vw, 2rem);
-  font-weight: 270;
-  line-height: 1.2;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(251, 203, 193, 0.3);
-}
-
-.title {
-  color: #FFF;
-  font-family: "SF Pro";
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 270;
-  line-height: 1.2;
-  margin-bottom: clamp(1rem, 3vh, 2rem);
-}
-
-.desc {
-  color: #FFF;
-  font-family: "SF Pro";
-  font-size: clamp(1.25rem, 3vw, 3rem);
-  font-weight: 274;
-  line-height: 1.4;
-  margin-bottom: clamp(2rem, 5vh, 4rem);
-}
-
-@media (max-width: 768px) {
-  .desc {
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(251, 203, 193, 0.3);
+    }
   }
 
-  button {
-    width: 100%;
+  .title {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 270;
+    line-height: normal;
+  }
+
+  .desc {
+    margin-top: 128px;
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 274;
+    line-height: normal;
   }
 }
 </style>

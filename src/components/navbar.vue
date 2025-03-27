@@ -52,6 +52,10 @@ const menuItems = [
       flex-shrink: 0;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.2);
+      img {
+        width: 50px;
+        height: 40px;
+      }
     }
     .navbar {
       width: 1235px;

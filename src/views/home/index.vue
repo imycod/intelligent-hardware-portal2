@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-black w-full overflow-hidden">
+  <div class="home-container min-h-screen bg-black w-full overflow-hidden">
     <!-- main -->
     <Initial />
 
@@ -40,5 +40,10 @@ import Subscriber from "./components/subscriber.vue"
 <style lang="scss" scoped>
 .font-sf-pro {
   font-family: "SF Pro", sans-serif;
+}
+.home-container{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 </style>

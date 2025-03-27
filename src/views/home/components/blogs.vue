@@ -1,15 +1,7 @@
 <template>
-  <section
-    class="flex px-[60px] py-[100px] flex-col items-start gap-[30px] self-stretch"
-  >
-    <p class="font-sf-pro text-2xl font-[410] text-white leading-normal">
-      TRY DIFFERENT BLOGS TO
-    </p>
-    <h2
-      class="font-sf-pro text-3xl md:text-4xl lg:text-[64px] font-[400] text-white"
-    >
-      Empower your Acumenbot.
-    </h2>
+  <section class="section-container flex flex-col items-start self-stretch">
+    <p class="font-sf-pro text-white">TRY DIFFERENT BLOGS TO</p>
+    <h2 class="font-sf-pro text-white">Empower your Acumenbot.</h2>
 
     <div class="w-full">
       <swiper
@@ -25,11 +17,7 @@
         class="mySwiper"
       >
         <swiper-slide v-for="index in 10" :key="index">
-          <div class="bg-[#FBCBC1] rounded-[20px] p-20 h-[600px]">
-            <h3 class="text-black text-2xl font-medium">
-              GET BETTER RESPONSES WITH BETTER PROMPTS
-            </h3>
-          </div>
+          <div class="item">GET BETTER RESPONSES WITH BETTER PROMPTS</div>
         </swiper-slide>
       </swiper>
     </div>
@@ -37,17 +25,53 @@
 </template>
 
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 // 重命名模块以避免与组件名冲突
 const SwiperAutoplay = Autoplay;
 </script>
 
-<style scoped>
-.swiper {
-  width: 100%;
-  height: 100%;
+<style lang="scss" scoped>
+.section-container {
+  padding-top: 100px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 100px;
+  gap: 30px;
+  p {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
+  h2 {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+    .item {
+      display: flex;
+      padding: 80px 142px 300px 90px;
+      align-items: center;
+      border-radius: 50px;
+      background: #fbcbc1;
+      color: #000;
+      font-family: "SF Pro";
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 274;
+      line-height: normal;
+    }
+  }
 }
 </style>
