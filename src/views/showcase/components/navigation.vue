@@ -10,7 +10,11 @@
       {{ feature.title }}
     </button>
     <span class="text-white">|</span>
-    <button class="text-white cursor-pointer" @click="onFeatureSelect('')">
+    <button
+      class="text-white cursor-pointer"
+      :class="{ 'font-bold !text-[#FBCBC1]': activeFeature === 'comparison' }"
+      @click="onFeatureSelect('comparison')"
+    >
       COMPARISON
     </button>
   </nav>

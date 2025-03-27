@@ -134,7 +134,7 @@ export default defineComponent({
 
     const handleFeatureSelect = (featureId: string) => {
       activeFeature.value = featureId;
-      if (!featureId) {
+      if (featureId === "comparison") {
         currentComponent.value = "ComparisonFeature";
       } else {
         const component = currentFeature.value.component;
