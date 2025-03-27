@@ -1,10 +1,12 @@
 <template>
-  <div class="min-h-[100vh] flex flex-col">
+  <div class="min-h-[100vh] bg-black flex flex-col">
     <Navbar />
-    <div class="flex-1 bg-black">
+    <div class="flex-1 ">
       <router-view />
     </div>
-    <Assemble />
+    <div class="footer-container">
+      <Assemble />
+    </div>
   </div>
 </template>
 
@@ -12,3 +14,9 @@
 import Navbar from "../components/navbar.vue";
 import Assemble from "../components/assemble.vue";
 </script>
+
+<style lang="scss" scoped>
+.footer-container {
+  padding: 10px 30px;
+}
+</style>
