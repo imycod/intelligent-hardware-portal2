@@ -214,14 +214,39 @@ onMounted(() => {
   margin-top: calc(var(--header-top) + var(--header-height) + 181px);
   margin-bottom: 323px;
 
+  @media (max-width: 767px) {
+    margin-top: calc(var(--header-top) + var(--header-height) + 100px);
+    margin-bottom: 150px;
+  }
+
+  .content-container {
+    @media (max-width: 767px) {
+      padding: 0 20px;
+    }
+  }
+
   .order-area {
+    @media (max-width: 767px) {
+      align-items: center;
+    }
+
     .left {
       width: 526px;
+
+      @media (max-width: 767px) {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+
+        .product-swiper {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
 
       .product-swiper {
         width: 100%;
         height: auto;
-        max-width: 526px;
         aspect-ratio: 526/351;
       }
 
@@ -233,6 +258,10 @@ onMounted(() => {
 
       .dots {
         margin-top: 36px;
+
+        @media (max-width: 767px) {
+          margin-top: 20px;
+        }
       }
 
       .t1 {
@@ -243,6 +272,12 @@ onMounted(() => {
         font-style: normal;
         font-weight: 120;
         line-height: normal;
+
+        @media (max-width: 767px) {
+          margin-top: 30px;
+          font-size: 18px;
+          text-align: center;
+        }
       }
 
       .t2 {
@@ -253,6 +288,12 @@ onMounted(() => {
         font-style: normal;
         font-weight: 120;
         line-height: normal;
+
+        @media (max-width: 767px) {
+          margin-top: 20px;
+          font-size: 16px;
+          text-align: center;
+        }
       }
     }
 
@@ -262,6 +303,13 @@ onMounted(() => {
       gap: 16px;
       flex-direction: column;
 
+      @media (max-width: 767px) {
+        margin-left: 0;
+        margin-top: 40px;
+        width: 100%;
+        align-items: center;
+      }
+
       .row1 {
         color: #fff;
         font-family: "SF Pro";
@@ -269,9 +317,21 @@ onMounted(() => {
         font-style: normal;
         font-weight: 410;
         line-height: normal;
+
+        @media (max-width: 767px) {
+          font-size: 24px;
+          text-align: center;
+        }
       }
 
       .row2 {
+        @media (max-width: 767px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
         .t1 {
           color: #fff;
           font-family: "SF Pro";
@@ -279,6 +339,10 @@ onMounted(() => {
           font-style: normal;
           font-weight: 760;
           line-height: normal;
+
+          @media (max-width: 767px) {
+            font-size: 22px;
+          }
         }
 
         .t2 {
@@ -288,6 +352,10 @@ onMounted(() => {
           font-style: normal;
           font-weight: 760;
           line-height: normal;
+
+          @media (max-width: 767px) {
+            font-size: 22px;
+          }
         }
 
         .t3 {
@@ -298,6 +366,10 @@ onMounted(() => {
           font-weight: 30;
           line-height: normal;
           text-decoration: line-through;
+
+          @media (max-width: 767px) {
+            font-size: 20px;
+          }
         }
       }
 
@@ -308,6 +380,11 @@ onMounted(() => {
         font-style: normal;
         font-weight: 760;
         line-height: normal;
+
+        @media (max-width: 767px) {
+          font-size: 20px;
+          text-align: center;
+        }
       }
 
       button {
@@ -319,10 +396,21 @@ onMounted(() => {
         border-radius: 50px;
         background: #fbcbc1;
         margin-left: auto;
+
+        @media (max-width: 767px) {
+          margin: 0 auto;
+          padding: 16px 32px;
+          font-size: 16px;
+        }
       }
 
       .divider {
         margin-top: 55px;
+
+        @media (max-width: 767px) {
+          margin-top: 30px;
+          width: 100%;
+        }
       }
 
       .desc-container {
@@ -331,6 +419,12 @@ onMounted(() => {
         gap: 36px;
         margin-top: 54px;
 
+        @media (max-width: 767px) {
+          margin-top: 30px;
+          gap: 20px;
+          width: 100%;
+        }
+
         p {
           color: #fff;
           font-family: "SF Pro";
@@ -338,6 +432,11 @@ onMounted(() => {
           font-style: normal;
           font-weight: 120;
           line-height: normal;
+
+          @media (max-width: 767px) {
+            font-size: 16px;
+            text-align: center;
+          }
         }
       }
     }
@@ -358,6 +457,11 @@ onMounted(() => {
     background: white;
     opacity: 0.5;
     margin: 0 !important;
+
+    @media (max-width: 767px) {
+      width: 16px;
+      height: 3px;
+    }
   }
 
   :deep(.swiper-pagination-bullet-active) {
