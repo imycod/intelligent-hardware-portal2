@@ -1,9 +1,22 @@
+@mixin content-small-screen {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
 .content-container {
     width: 1584px;
+
+    @include content-small-screen {
+        width: 100%;
+        padding: 0 20px;
+    }
 }
+
 .font-sf-pro {
     font-family: "SF Pro";
 }
+
 .font-sf-pro-bold {
     font-family: "SF Pro";
     font-weight: bold;

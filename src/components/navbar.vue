@@ -7,11 +7,8 @@
         </router-link>
         <ul class="navbar">
           <li v-for="item in menuItems" :key="item.path">
-            <router-link
-              :to="item.path"
-              class="font-sf-pro text-white hover:text-[#FBCBC1] transition-colors"
-              :class="{ '!text-[#FBCBC1]': $route.path === item.path }"
-            >
+            <router-link :to="item.path" class="font-sf-pro text-white hover:text-[#FBCBC1] transition-colors"
+              :class="{ '!text-[#FBCBC1]': $route.path === item.path }">
               {{ item.name }}
             </router-link>
           </li>
@@ -37,6 +34,7 @@ const menuItems = [
 <style lang="scss" scoped>
 .navbar-container {
   margin-top: 75px;
+
   .header {
     height: var(--header-height);
 
@@ -50,11 +48,13 @@ const menuItems = [
       flex-shrink: 0;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.2);
+
       img {
         width: 50px;
         height: 40px;
       }
     }
+
     .navbar {
       width: 1235px;
       display: flex;
@@ -64,6 +64,7 @@ const menuItems = [
       align-self: stretch;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.2);
+
       ul,
       li {
         text-align: center;
@@ -72,6 +73,7 @@ const menuItems = [
         font-weight: 410;
       }
     }
+
     .order {
       display: flex;
       height: 100%;

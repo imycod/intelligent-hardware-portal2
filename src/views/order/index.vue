@@ -1,9 +1,9 @@
 <template>
   <div class="order-container w-full h-full overflow-hidden">
     <div class="content-container mx-auto flex flex-col">
-      <div class="flex order-area flex-col lg:flex-row">
+      <div class="flex order-area flex-col lg:flex-row max-lg:flex-col">
         <!-- 左侧产品图片 - 使用Swiper轮播 -->
-        <div class="left">
+        <div class="left max-lg:w-full">
           <swiper :modules="[SwiperPagination, SwiperAutoplay]" :slides-per-view="1" :pagination="{
             clickable: true,
             el: '.swiper-pagination',
@@ -15,7 +15,7 @@
             <div class="swiper-pagination"></div>
           </swiper>
           <div class="dots"></div>
-          <div class="t1">Estimated delivery date: June 1th</div>
+          <div class="t1 max-lg:text-xl">Estimated delivery date: June 1th</div>
           <div class="t2">
             *unconditional refund through the first week after delivery;
             subscription is NOT mandatory after free trial and can be
@@ -210,39 +210,20 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@mixin content-small-screen {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
 .order-container {
   margin-top: calc(var(--header-top) + var(--header-height) + 181px);
   margin-bottom: 323px;
 
-  @media (max-width: 767px) {
-    margin-top: calc(var(--header-top) + var(--header-height) + 100px);
-    margin-bottom: 150px;
-  }
-
-  .content-container {
-    @media (max-width: 767px) {
-      padding: 0 20px;
-    }
-  }
-
   .order-area {
-    @media (max-width: 767px) {
-      align-items: center;
-    }
 
     .left {
-      width: 526px;
-
-      @media (max-width: 767px) {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-
-        .product-swiper {
-          width: 100%;
-          max-width: 100%;
-        }
-      }
+      width: 526px; // 桌面端样式
 
       .product-swiper {
         width: 100%;
@@ -258,26 +239,17 @@ onMounted(() => {
 
       .dots {
         margin-top: 36px;
-
-        @media (max-width: 767px) {
-          margin-top: 20px;
-        }
       }
 
+
       .t1 {
-        margin-top: 54px;
         color: #fff;
         font-family: "SF Pro";
-        font-size: 24px;
         font-style: normal;
         font-weight: 120;
         line-height: normal;
-
-        @media (max-width: 767px) {
-          margin-top: 30px;
-          font-size: 18px;
-          text-align: center;
-        }
+        font-size: 24px;
+        margin-top: 54px;
       }
 
       .t2 {
@@ -288,11 +260,29 @@ onMounted(() => {
         font-style: normal;
         font-weight: 120;
         line-height: normal;
+      }
 
-        @media (max-width: 767px) {
+      @include content-small-screen {
+        width: 100%;
+        padding: 0 20px;
+
+        .product-swiper {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .dots {
           margin-top: 20px;
-          font-size: 16px;
-          text-align: center;
+        }
+
+        .t1 {
+          margin-top: 30px;
+          font-size: 28px;
+        }
+
+        .t2 {
+          margin-top: 20px;
+          font-size: 20px;
         }
       }
     }
@@ -303,13 +293,6 @@ onMounted(() => {
       gap: 16px;
       flex-direction: column;
 
-      @media (max-width: 767px) {
-        margin-left: 0;
-        margin-top: 40px;
-        width: 100%;
-        align-items: center;
-      }
-
       .row1 {
         color: #fff;
         font-family: "SF Pro";
@@ -317,21 +300,9 @@ onMounted(() => {
         font-style: normal;
         font-weight: 410;
         line-height: normal;
-
-        @media (max-width: 767px) {
-          font-size: 24px;
-          text-align: center;
-        }
       }
 
       .row2 {
-        @media (max-width: 767px) {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
         .t1 {
           color: #fff;
           font-family: "SF Pro";
@@ -339,10 +310,6 @@ onMounted(() => {
           font-style: normal;
           font-weight: 760;
           line-height: normal;
-
-          @media (max-width: 767px) {
-            font-size: 22px;
-          }
         }
 
         .t2 {
@@ -352,10 +319,6 @@ onMounted(() => {
           font-style: normal;
           font-weight: 760;
           line-height: normal;
-
-          @media (max-width: 767px) {
-            font-size: 22px;
-          }
         }
 
         .t3 {
@@ -366,10 +329,6 @@ onMounted(() => {
           font-weight: 30;
           line-height: normal;
           text-decoration: line-through;
-
-          @media (max-width: 767px) {
-            font-size: 20px;
-          }
         }
       }
 
@@ -380,11 +339,6 @@ onMounted(() => {
         font-style: normal;
         font-weight: 760;
         line-height: normal;
-
-        @media (max-width: 767px) {
-          font-size: 20px;
-          text-align: center;
-        }
       }
 
       button {
@@ -396,21 +350,10 @@ onMounted(() => {
         border-radius: 50px;
         background: #fbcbc1;
         margin-left: auto;
-
-        @media (max-width: 767px) {
-          margin: 0 auto;
-          padding: 16px 32px;
-          font-size: 16px;
-        }
       }
 
       .divider {
         margin-top: 55px;
-
-        @media (max-width: 767px) {
-          margin-top: 30px;
-          width: 100%;
-        }
       }
 
       .desc-container {
@@ -419,12 +362,6 @@ onMounted(() => {
         gap: 36px;
         margin-top: 54px;
 
-        @media (max-width: 767px) {
-          margin-top: 30px;
-          gap: 20px;
-          width: 100%;
-        }
-
         p {
           color: #fff;
           font-family: "SF Pro";
@@ -432,8 +369,58 @@ onMounted(() => {
           font-style: normal;
           font-weight: 120;
           line-height: normal;
+        }
+      }
 
-          @media (max-width: 767px) {
+      @include content-small-screen {
+        margin-top: 40px;
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-left: 0px;
+
+        .row1 {
+          font-size: 24px;
+        }
+
+        .row2 {
+          display: flex;
+
+          .t1 {
+            font-size: 22px;
+          }
+
+          .t2 {
+            font-size: 22px;
+          }
+
+          .t3 {
+            font-size: 20px;
+          }
+        }
+
+        .row3 {
+          font-size: 20px;
+        }
+
+        button {
+          margin-top: 10px;
+          padding: 16px 32px;
+          font-size: 16px;
+          width: 100%;
+        }
+
+        .divider {
+          margin-top: 30px;
+          width: 100%;
+        }
+
+        .desc-container {
+          margin-top: 30px;
+          gap: 20px;
+          width: 100%;
+
+          p {
             font-size: 16px;
             text-align: center;
           }
