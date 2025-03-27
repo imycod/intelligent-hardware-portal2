@@ -4,17 +4,11 @@
       <div class="flex order-area flex-col lg:flex-row">
         <!-- 左侧产品图片 - 使用Swiper轮播 -->
         <div class="left">
-          <swiper
-            :modules="[SwiperPagination, SwiperAutoplay]"
-            :slides-per-view="1"
-            :pagination="{
-              clickable: true,
-              el: '.swiper-pagination',
-              type: 'bullets',
-            }"
-            :autoplay="{ delay: 5000, disableOnInteraction: false }"
-            class="product-swiper rounded-lg"
-          >
+          <swiper :modules="[SwiperPagination, SwiperAutoplay]" :slides-per-view="1" :pagination="{
+            clickable: true,
+            el: '.swiper-pagination',
+            type: 'bullets',
+          }" :autoplay="{ delay: 5000, disableOnInteraction: false }" class="product-swiper rounded-lg">
             <swiper-slide v-for="(image, index) in productImages" :key="index">
               <img :src="image" alt="Acumenbot" class="rounded-lg w-full" />
             </swiper-slide>
@@ -218,6 +212,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .order-container {
   margin-top: calc(var(--header-top) + var(--header-height) + 181px);
+  margin-bottom: 323px;
+
   .order-area {
     .left {
       width: 526px;
@@ -238,6 +234,7 @@ onMounted(() => {
       .dots {
         margin-top: 36px;
       }
+
       .t1 {
         margin-top: 54px;
         color: #fff;
@@ -247,6 +244,7 @@ onMounted(() => {
         font-weight: 120;
         line-height: normal;
       }
+
       .t2 {
         margin-top: 36px;
         color: #fff;
@@ -257,11 +255,13 @@ onMounted(() => {
         line-height: normal;
       }
     }
+
     .right {
       margin-left: 58px;
       display: flex;
       gap: 16px;
       flex-direction: column;
+
       .row1 {
         color: #fff;
         font-family: "SF Pro";
@@ -270,6 +270,7 @@ onMounted(() => {
         font-weight: 410;
         line-height: normal;
       }
+
       .row2 {
         .t1 {
           color: #fff;
@@ -279,6 +280,7 @@ onMounted(() => {
           font-weight: 760;
           line-height: normal;
         }
+
         .t2 {
           color: #fbcbc1;
           font-family: "SF Pro";
@@ -287,6 +289,7 @@ onMounted(() => {
           font-weight: 760;
           line-height: normal;
         }
+
         .t3 {
           color: #fff;
           font-family: "SF Pro";
@@ -297,6 +300,7 @@ onMounted(() => {
           text-decoration: line-through;
         }
       }
+
       .row3 {
         color: #fbcbc1;
         font-family: "SF Pro";
@@ -305,6 +309,7 @@ onMounted(() => {
         font-weight: 760;
         line-height: normal;
       }
+
       button {
         display: inline-flex;
         padding: 24px 48px;
@@ -315,6 +320,7 @@ onMounted(() => {
         background: #fbcbc1;
         margin-left: auto;
       }
+
       .divider {
         margin-top: 55px;
       }
@@ -324,6 +330,7 @@ onMounted(() => {
         flex-direction: column;
         gap: 36px;
         margin-top: 54px;
+
         p {
           color: #fff;
           font-family: "SF Pro";
