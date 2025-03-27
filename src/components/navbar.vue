@@ -1,23 +1,24 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-transparent">
-    <div class="header mx-auto px-4 md:px-8 py-6">
-      <div class="flex h-[90px] justify-between items-center gap-6">
-        <router-link to="/home"
-          class="w-[90px] md:w-[130px] h-full rounded-[50px] bg-white/20 flex justify-center items-center">
-          <img src="@/assets/home/logo.svg" alt="logo" class="h-6 md:h-8" />
+  <nav
+    class="absolute top-0 left-0 right-0 z-50 navbar-container bg-transparent"
+  >
+    <div class="content-container header mx-auto">
+      <div class="w-full h-full flex justify-between items-center">
+        <router-link to="/home" class="logo">
+          <img src="@/assets/home/logo.svg" alt="logo" />
         </router-link>
-        <ul
-          class="navbar hidden md:flex h-full mx-4 lg:mx-[24px] px-8 rounded-[50px] bg-white/20 justify-center items-center gap-6 lg:gap-[36px] flex-1">
+        <ul class="navbar">
           <li v-for="item in menuItems" :key="item.path">
-            <router-link :to="item.path"
-              class="font-sf-pro text-base lg:text-lg text-white hover:text-[#FBCBC1] transition-colors"
-              :class="{ '!text-[#FBCBC1]': $route.path === item.path }">
+            <router-link
+              :to="item.path"
+              class="font-sf-pro text-white hover:text-[#FBCBC1] transition-colors"
+              :class="{ '!text-[#FBCBC1]': $route.path === item.path }"
+            >
               {{ item.name }}
             </router-link>
           </li>
         </ul>
-        <router-link to="/order"
-          class="h-[90px] px-6 md:px-[48px] py-[10px] rounded-[50px] bg-[#FBCBC1] text-black font-sf-pro text-base lg:text-lg flex justify-center items-center cursor-pointer">
+        <router-link to="/order" class="order cursor-pointer">
           Order
         </router-link>
       </div>
@@ -35,9 +36,58 @@ const menuItems = [
 ];
 </script>
 
-
 <style lang="scss" scoped>
-.header {
-  width: 1584px;
+.navbar-container {
+  margin-top: 75px;
+  .header {
+    height: 90px;
+
+    .logo {
+      display: flex;
+      width: 130px;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .navbar {
+      width: 1235px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      align-self: stretch;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      li {
+        a {
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 410;
+          line-height: normal;
+        }
+      }
+    }
+    .order {
+      display: flex;
+      height: 90px;
+      padding: 10px 48px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 50px;
+      background: #fbcbc1;
+      color: #000;
+      font-family: "SF Pro";
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 410;
+      line-height: normal;
+    }
+  }
 }
 </style>

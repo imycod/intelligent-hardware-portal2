@@ -17,9 +17,6 @@ importers:
       gsap:
         specifier: ^3.12.7
         version: 3.12.7
-      intelligent-hardware-portal:
-        specifier: 'file:'
-        version: file:(typescript@5.7.3)(vite@6.2.1(@types/node@22.13.13)(jiti@2.4.2)(lightningcss@1.29.2)(sass@1.85.1)(terser@5.39.0))
       recorder-core:
         specifier: ^1.3.25011100
         version: 1.3.25011100
@@ -856,8 +853,6 @@ packages:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
 
-  'intelligent-hardware-portal@file:':
-    resolution: {directory: '', type: directory}
 
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
