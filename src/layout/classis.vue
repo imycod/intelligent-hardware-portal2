@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-[100vh] bg-black flex flex-col">
     <Navbar />
-    <div class="flex-1 ">
+    <div class="flex-1">
       <router-view />
     </div>
     <div class="footer-container">

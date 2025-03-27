@@ -1,7 +1,5 @@
 <template>
-  <nav
-    class="absolute top-0 left-0 right-0 z-50 navbar-container bg-transparent"
-  >
+  <nav class="navbar-container absolute top-0 left-0 right-0 z-50 bg-transparent">
     <div class="content-container header mx-auto">
       <div class="w-full h-full flex justify-between items-center">
         <router-link to="/home" class="logo">
@@ -40,7 +38,7 @@ const menuItems = [
 .navbar-container {
   margin-top: 75px;
   .header {
-    height: 90px;
+    height: var(--header-height);
 
     .logo {
       display: flex;
@@ -76,7 +74,7 @@ const menuItems = [
     }
     .order {
       display: flex;
-      height: 90px;
+      height: 100%;
       padding: 10px 48px;
       flex-direction: column;
       justify-content: center;
