@@ -62,13 +62,12 @@ const menuItems = [
       align-self: stretch;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.2);
+      ul,
       li {
-        a {
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 410;
-          line-height: normal;
-        }
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 410;
       }
     }
     .order {
