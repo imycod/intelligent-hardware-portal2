@@ -421,8 +421,7 @@ onMounted(() => {
           width: 100%;
 
           p {
-            font-size: 16px;
-            text-align: center;
+            font-size: 26px;
           }
         }
       }
