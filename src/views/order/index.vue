@@ -1,7 +1,7 @@
 <template>
   <div class="order-container w-full h-full overflow-hidden">
     <div class="content-container mx-auto flex flex-col">
-      <div class="flex order-area flex-col lg:flex-row max-lg:flex-col">
+      <div class="flex order-area flex-col lg:flex-row">
         <!-- 左侧产品图片 - 使用Swiper轮播 -->
         <div class="left max-lg:w-full">
           <swiper :modules="[SwiperPagination, SwiperAutoplay]" :slides-per-view="1" :pagination="{
@@ -221,9 +221,12 @@ onMounted(() => {
   margin-bottom: 323px;
 
   .order-area {
+    @include content-small-screen {
+      flex-direction: column;
+    }
 
     .left {
-      width: 526px; // 桌面端样式
+      width: 526px;
 
       .product-swiper {
         width: 100%;
