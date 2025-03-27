@@ -1,9 +1,9 @@
 <template>
   <article class="article">
-    <h2 class="mb-9 text-5xl text-white font-[410] max-sm:text-3xl">
+    <h2 class="title text-white">
       {{ title }}
     </h2>
-    <p class="text-3xl leading-snug text-white font-[120] max-sm:text-2xl">
+    <p class="desc">
       {{ description }}
     </p>
   </article>
@@ -35,7 +35,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.article{
-  width: 574px;
+.article {
+  flex: 1;
+  .title {
+    margin-bottom: 36px;
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
+  .desc {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 120;
+    line-height: normal;
+  }
 }
 </style>

@@ -1,20 +1,18 @@
 <template>
-  <div class="h-full w-full overflow-hidden pb-[301px]">
+  <div class="try-acumenbot-container h-full w-full overflow-hidden pb-[301px]">
     <div id="error-toast" class="toast"></div>
     <!-- 主内容 -->
-    <div
-      class="max-w-[1920px] mx-auto flex flex-col items-center px-4 md:px-8 text-white"
-    >
+    <div class="max-w-[1920px] mx-auto flex flex-col items-center text-white">
       <div
         ref="titleText"
-        class="text-white mt-[233px] title opacity-0"
+        class="text-white title opacity-0"
         v-show="!isStarted"
       >
         Press the button to start your 5-minute free trial
       </div>
       <div
         ref="botText"
-        class="text-white mt-[233px] title opacity-0"
+        class="text-white title opacity-0"
         v-show="isStarted"
       >
         Say 'Hey Bot' into your microphone to start the conversation
@@ -97,7 +95,12 @@
             </div>
           </div>
         </div>
-        <img src="@/assets/bot/x-circle.png" alt="" class="close-btn" @click="closeChatMessages" />
+        <img
+          src="@/assets/bot/x-circle.png"
+          alt=""
+          class="close-btn"
+          @click="closeChatMessages"
+        />
       </div>
     </div>
     <!-- 音频输出 -->
@@ -703,242 +706,245 @@ function closeChatMessages() {
 </script>
 
 <style lang="scss" scoped>
-.title {
-  color: #fff;
-  text-align: center;
-  font-family: "SF Pro";
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 410;
-  line-height: normal;
-}
+.try-acumenbot-container {
+  padding-top: calc(var(--header-top) + var(--header-height) + 253px);
+  .title {
+    color: #fff;
+    text-align: center;
+    font-family: "SF Pro";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
 
-.image-box {
-  position: relative;
-  width: 664.27px;
-  height: 383.319px;
+  .image-box {
+    position: relative;
+    width: 664.27px;
+    height: 383.319px;
 
-  img {
-    position: absolute;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .light {
+    width: 664.27px;
+    height: 383.319px;
+    transform: rotate(-159.125deg);
+    border-radius: 664.27px;
+    filter: blur(15px);
+    pointer-events: none;
+  }
+
+  .user-light {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(143, 255, 169, 0.3) 0%,
+      rgba(143, 255, 169, 0) 100%
+    );
+  }
+
+  .bot-light {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(25, 201, 255, 0.8) 0%,
+      rgba(25, 201, 255, 0) 100%
+    );
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .modal-container {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-  }
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0);
+    z-index: 1000;
+    box-sizing: border-box;
+    animation: fadeIn 0.3s ease-in-out;
 
-.light {
-  width: 664.27px;
-  height: 383.319px;
-  transform: rotate(-159.125deg);
-  border-radius: 664.27px;
-  filter: blur(15px);
-  pointer-events: none;
-}
-
-.user-light {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(143, 255, 169, 0.3) 0%,
-    rgba(143, 255, 169, 0) 100%
-  );
-}
-
-.bot-light {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(25, 201, 255, 0.8) 0%,
-    rgba(25, 201, 255, 0) 100%
-  );
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.modal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0);
-  z-index: 1000;
-  box-sizing: border-box;
-  animation: fadeIn 0.3s ease-in-out;
-
-  .chat-container {
-    width: 1244px;
-    height: 800px;
-    position: relative;
-    .chat-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-    }
-
-    .chat-messages {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      overflow-y: scroll;
-      padding: 50px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 36px;
-      flex-shrink: 0;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.2);
-
-      // 滚动条padding-top 50px
-      &::-webkit-scrollbar {
-        padding-top: 50px;
+    .chat-container {
+      width: 1244px;
+      height: 800px;
+      position: relative;
+      .chat-bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
       }
 
-      .message {
-        width: 100%;
+      .chat-messages {
         display: flex;
-        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 50px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 36px;
+        flex-shrink: 0;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.2);
 
-        &.user {
-          justify-content: flex-end;
-
-          .message-content {
-            display: flex;
-            padding: 10px 24px;
-            align-items: flex-start;
-            gap: 10px;
-            align-self: stretch;
-            border-radius: 50px;
-            background: #fff;
-            color: #000;
-            max-width: 70%;
-            font-size: 24px;
-          }
+        // 滚动条padding-top 50px
+        &::-webkit-scrollbar {
+          padding-top: 50px;
         }
 
-        &.assistant {
+        .message {
+          width: 100%;
+          display: flex;
           justify-content: flex-start;
 
-          .message-content {
-            color: #fff;
-            font-family: "SF Pro";
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 270;
-            line-height: normal;
-            max-width: 70%;
+          &.user {
+            justify-content: flex-end;
+
+            .message-content {
+              display: flex;
+              padding: 10px 24px;
+              align-items: flex-start;
+              gap: 10px;
+              align-self: stretch;
+              border-radius: 50px;
+              background: #fff;
+              color: #000;
+              max-width: 70%;
+              font-size: 24px;
+            }
+          }
+
+          &.assistant {
+            justify-content: flex-start;
+
+            .message-content {
+              color: #fff;
+              font-family: "SF Pro";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 270;
+              line-height: normal;
+              max-width: 70%;
+            }
           }
         }
       }
+      .close-btn {
+        position: absolute;
+        top: 0px;
+        right: -65px;
+        cursor: pointer;
+      }
     }
-    .close-btn {
-      position: absolute;
-      top: 0px;
-      right: -65px;
-      cursor: pointer;
-    }
-  }
-}
-
-.icon-with-spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-width: 120px;
-}
-
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #000;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  flex-shrink: 0;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.toast {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 16px 24px;
-  border-radius: 4px;
-  font-size: 14px;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-  &.error {
-    background-color: #f44336;
-    color: white;
   }
 
-  &.warning {
-    background-color: #ffd700;
-    color: black;
-  }
-}
-
-.button-area {
-  margin-top: 150px;
-  display: flex;
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  height: 77px;
-
-  .start {
-    width: 215px;
-    height: 77px;
-    display: inline-flex;
-    padding: 24px 48px;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    font-family: "SF Pro";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 270;
-    line-height: normal;
-    border-radius: 50px;
-    background: #fbcbc1;
-  }
-
-  .start-over,
-  .view-transcript {
-    cursor: pointer;
+  .icon-with-spinner {
     display: flex;
-    padding: 24px 48px;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-    border-radius: 50px;
-    background: #fff;
-    color: #000;
-    font-family: "SF Pro";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 270;
-    line-height: normal;
+    justify-content: center;
+    gap: 12px;
+    min-width: 120px;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &.error {
+      background-color: #f44336;
+      color: white;
+    }
+
+    &.warning {
+      background-color: #ffd700;
+      color: black;
+    }
+  }
+
+  .button-area {
+    margin-top: 150px;
+    display: flex;
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    height: 77px;
+
+    .start {
+      width: 215px;
+      height: 77px;
+      display: inline-flex;
+      padding: 24px 48px;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+      font-family: "SF Pro";
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 270;
+      line-height: normal;
+      border-radius: 50px;
+      background: #fbcbc1;
+    }
+
+    .start-over,
+    .view-transcript {
+      cursor: pointer;
+      display: flex;
+      padding: 24px 48px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 50px;
+      background: #fff;
+      color: #000;
+      font-family: "SF Pro";
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 270;
+      line-height: normal;
+    }
   }
 }
 </style>

@@ -1,28 +1,23 @@
 <template>
-  <nav
-    class="flex justify-between items-center mb-20 max-md:flex-wrap max-md:gap-5 max-md:justify-center max-sm:justify-between"
-  >
+  <nav class="flex justify-between items-center navbar">
     <button
       v-for="feature in features"
       :key="feature.id"
       @click="onFeatureSelect(feature.id)"
-      class="text-2xl text-white cursor-pointer font-[410]"
-      :class="{ 'font-bold': activeFeature === feature.id }"
+      class="text-white cursor-pointer"
+      :class="{ 'font-bold !text-[#FBCBC1]': activeFeature === feature.id }"
     >
       {{ feature.title }}
     </button>
-    <span class="text-2xl text-white">|</span>
-    <button
-      class="text-2xl text-white cursor-pointer font-[410]"
-      @click="onFeatureSelect('')"
-    >
+    <span class="text-white">|</span>
+    <button class="text-white cursor-pointer" @click="onFeatureSelect('')">
       COMPARISON
     </button>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, toRefs } from "vue";
 import type { FeatureNavigationProps } from "../types.ts";
 
 export default defineComponent({
@@ -42,17 +37,30 @@ export default defineComponent({
     },
   },
   setup(props: FeatureNavigationProps) {
+    const { features, activeFeature, onFeatureSelect } = toRefs(props);
+
     return {
-      features: props.features,
-      activeFeature: props.activeFeature,
-      onFeatureSelect: props.onFeatureSelect,
+      features,
+      activeFeature,
+      onFeatureSelect,
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-nav{
+.navbar {
   width: 1481px;
+  height: 29px;
+  margin: 0 auto;
+  margin-bottom: 97px;
+  button {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
 }
 </style>

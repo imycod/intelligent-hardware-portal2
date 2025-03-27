@@ -1,5 +1,5 @@
 <template>
-  <section class="flex gap-14 max-md:flex-col max-md:items-center">
+  <section class="section-container">
     <VideoFeature
       :imageUrl="
         feature.videoUrl ||
@@ -27,3 +27,12 @@ defineProps({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.section-container {
+  display: flex;
+  gap: 59px;
+  
+
+}
+</style>

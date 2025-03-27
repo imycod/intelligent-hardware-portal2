@@ -1,12 +1,10 @@
 <template>
   <section class="relative h-screen w-full overflow-hidden">
-    <div class="absolute inset-0">
-      <img
-        src="@/assets/home/1.png"
-        alt="background"
-        class="w-full h-full object-cover object-center"
-      />
-    </div>
+    <img
+      src="@/assets/home/1.png"
+      alt="background"
+      class="absolute w-full h-full object-cover object-center"
+    />
     <div
       class="relative z-10 content-container mx-auto flex flex-col items-center justify-center h-full"
     >

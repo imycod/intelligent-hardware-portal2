@@ -1,12 +1,9 @@
 <template>
-  <footer class="flex justify-between items-center mt-20 max-md:flex-col max-md:gap-5 max-md:text-center">
-    <p class="text-2xl text-white font-[410] max-sm:text-lg">
+  <footer class="flex justify-between items-center">
+    <p class="instruction-text">
       {{ instructionText }}
     </p>
-    <button @click="onExit"
-      class="px-12 py-6 text-2xl text-black bg-red-200 cursor-pointer font-[270] rounded-[50px] max-sm:px-8 max-sm:py-4 max-sm:text-xl">
-      Exit
-    </button>
+    <button @click="onExit" class="exit-button">Exit</button>
   </footer>
 </template>
 
@@ -34,3 +31,34 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+footer {
+  margin-top: 121px;
+  display: flex;
+  justify-content: space-between;
+  .exit-button {
+    display: inline-flex;
+    padding: 24px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    background: #fbcbc1;
+    color: #000;
+    font-family: "SF Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 270;
+    line-height: normal;
+  }
+  .instruction-text {
+    color: #fff;
+    font-family: "SF Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 410;
+    line-height: normal;
+  }
+}
+</style>

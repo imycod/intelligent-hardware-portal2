@@ -4,9 +4,7 @@
       href="https://fonts.googleapis.com/css2?family=SF+Pro:wght@100;200;300;400;500&display=swap"
       rel="stylesheet"
     />
-    <main
-      class="px-32 flex flex-col py-24 mx-auto max-w-none min-h-screen bg-black max-md:px-5 max-md:py-10 max-md:max-w-[991px] max-sm:max-w-screen-sm"
-    >
+    <main class="showcase-container flex flex-col min-h-screen bg-black">
       <FeatureNavigation
         :features="features"
         :activeFeature="activeFeature"
@@ -14,10 +12,10 @@
       />
 
       <!-- Dynamic component with transition -->
-      <div class="component-container  flex flex-col relative">
-        <Transition 
-          @enter="onEnter" 
-          @leave="onLeave" 
+      <div class="component-container flex flex-col relative">
+        <Transition
+          @enter="onEnter"
+          @leave="onLeave"
           :css="false"
           mode="out-in"
         >
@@ -71,24 +69,24 @@ export default defineComponent({
       },
       {
         id: "reliable-stable",
-        title: "RELIABLE & STABLE",
+        title: "Reliable and Stable",
         description:
-          "Acumenbot provides consistent and reliable responses, ensuring stable performance even during high-demand periods or complex queries.",
-        component: "",
+          "Backed by robust servers, Acumenbot demonstrates exceptional stability. It consistently provides intelligent and reliable responses, as long as you have good internet connectivity",
+        component: "WakeupFeature",
       },
       {
         id: "cross-devices-sync",
-        title: "CROSS-DEVICES SYNC",
+        title: "Cross-Device Sync",
         description:
-          "Seamlessly continue your conversations across all your devices. Acumenbot syncs your interaction history, preferences, and custom settings automatically.",
-        component: "",
+          "Use Acumenbot on your phone, tablet , or PC with our app or web interface. Conversations are automatically synced in the cloud, ensuring you can conveniently pick up where you left off on any device, anytime. ",
+        component: "WakeupFeature",
       },
-      {
+      {   
         id: "effortless-export",
-        title: "EFFORTLESS EXPORT",
+        title: "Effortless Export",
         description:
-          "Easily export your conversations, insights, and generated content in multiple formats for sharing or future reference.",
-        component: "",
+          "You can easily export your conversations with Acumenbot as a text file. . This allows you to record your spontaneous good ideas that you might not even remember yourself.",
+        component: "WakeupFeature",
       },
     ];
 
@@ -162,3 +160,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.showcase-container {
+  padding-top: 94px;
+  padding-right: 123px;
+  padding-left: 124px;
+}
+</style>
